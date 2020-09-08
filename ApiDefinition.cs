@@ -393,41 +393,41 @@ namespace NativeLibrary
 	}
 
 	// @interface DPCPair : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType (typeof(NSObject))]
 	interface DPCPair
 	{
 		// @property (nonatomic, strong) NSString * _Nonnull code;
-		[Export("code", ArgumentSemantic.Strong)]
+		[Export ("code", ArgumentSemantic.Strong)]
 		string Code { get; set; }
 
 		// @property (nonatomic, strong) NSString * _Nonnull name;
-		[Export("name", ArgumentSemantic.Strong)]
+		[Export ("name", ArgumentSemantic.Strong)]
 		string Name { get; set; }
 
 		// -(instancetype _Nonnull)initWithDictionary:(NSDictionary<NSString *,id> * _Nonnull)dictionary;
-		[Export("initWithDictionary:")]
-		IntPtr Constructor(NSDictionary<NSString, NSObject> dictionary);
+		[Export ("initWithDictionary:")]
+		IntPtr Constructor (NSDictionary<NSString, NSObject> dictionary);
 	}
 
 	// @interface DPCBalance : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType (typeof(NSObject))]
 	interface DPCBalance
 	{
 		// @property (nonatomic, strong) NSNumber * _Nonnull amount;
-		[Export("amount", ArgumentSemantic.Strong)]
+		[Export ("amount", ArgumentSemantic.Strong)]
 		NSNumber Amount { get; set; }
 
 		// @property (nonatomic, strong) DPCPair * _Nonnull currency;
-		[Export("currency", ArgumentSemantic.Strong)]
+		[Export ("currency", ArgumentSemantic.Strong)]
 		DPCPair Currency { get; set; }
 
 		// @property (nonatomic, strong) NSString * _Nonnull accountNumber;
-		[Export("accountNumber", ArgumentSemantic.Strong)]
+		[Export ("accountNumber", ArgumentSemantic.Strong)]
 		string AccountNumber { get; set; }
 
 		// -(instancetype _Nonnull)initWithDictionary:(NSDictionary<NSString *,id> * _Nonnull)dictionary;
-		[Export("initWithDictionary:")]
-		IntPtr Constructor(NSDictionary<NSString, NSObject> dictionary);
+		[Export ("initWithDictionary:")]
+		IntPtr Constructor (NSDictionary<NSString, NSObject> dictionary);
 	}
 
 	// @interface DPCTransaction : NSObject
