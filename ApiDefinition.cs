@@ -254,6 +254,39 @@ namespace NativeLibrary
 		NSDictionary<NSString, NSObject> DictionaryRepresentation { get; }
 	}
 
+	// @interface DPCBeneficiary : NSObject
+	[BaseType (typeof(NSObject))]
+	interface DPCBeneficiary
+	{
+		// @property (nonatomic, strong) NSString * _Nonnull name;
+		[Export ("name", ArgumentSemantic.Strong)]
+		string Name { get; set; }
+
+		// @property (nonatomic, strong) NSString * _Nullable accountNumber;
+		[NullAllowed, Export ("accountNumber", ArgumentSemantic.Strong)]
+		string AccountNumber { get; set; }
+
+		// @property (nonatomic, strong) NSString * _Nullable iban;
+		[NullAllowed, Export ("iban", ArgumentSemantic.Strong)]
+		string Iban { get; set; }
+
+		// @property (nonatomic, strong) NSString * _Nonnull type;
+		[Export ("type", ArgumentSemantic.Strong)]
+		string Type { get; set; }
+
+		// @property (nonatomic, strong) NSString * _Nonnull status;
+		[Export ("status", ArgumentSemantic.Strong)]
+		string Status { get; set; }
+
+		// @property (nonatomic, strong) NSString * _Nonnull accountID;
+		[Export ("accountID", ArgumentSemantic.Strong)]
+		string AccountID { get; set; }
+
+		// -(instancetype _Nonnull)initWithDictionary:(NSDictionary<NSString *,id> * _Nonnull)dictionary;
+		[Export ("initWithDictionary:")]
+		IntPtr Constructor (NSDictionary<NSString, NSObject> dictionary);
+	}
+
 	// @interface DPCLinesAddress : NSObject
 	[BaseType (typeof(NSObject))]
 	interface DPCLinesAddress
@@ -347,8 +380,6 @@ namespace NativeLibrary
 		[Export("initWithDictionary:")]
 		IntPtr Constructor(NSDictionary<NSString, NSObject> dictionary);
 	}
-
-
 
 	// @interface DPCAddress : NSObject
 	[BaseType(typeof(NSObject))]
