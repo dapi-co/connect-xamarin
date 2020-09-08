@@ -206,23 +206,23 @@ namespace NativeLibrary
 	}
 	
 	// @interface DPCConnectionSubaccountDetails : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType (typeof(NSObject))]
 	interface DPCConnectionSubaccountDetails
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull accountID;
-		[Export("accountID")]
+		[Export ("accountID")]
 		string AccountID { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nonnull accountNumber;
-		[Export("accountNumber")]
+		[Export ("accountNumber")]
 		string AccountNumber { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nonnull currencyCode;
-		[Export("currencyCode")]
+		[Export ("currencyCode")]
 		string CurrencyCode { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nonnull type;
-		[Export("type")]
+		[Export ("type")]
 		string Type { get; set; }
 	}
 	
