@@ -8,6 +8,84 @@ namespace NativeLibrary
 {
 
 
+
+
+
+	// @interface DPCTransferBound : NSObject
+	[BaseType (typeof(NSObject))]
+	interface DPCTransferBound
+	{
+		// @property (nonatomic, strong) NSNumber * _Nonnull minimum;
+		[Export ("minimum", ArgumentSemantic.Strong)]
+		NSNumber Minimum { get; set; }
+
+		// @property (nonatomic, strong) DPCPair * _Nonnull currency;
+		[Export ("currency", ArgumentSemantic.Strong)]
+		DPCPair Currency { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull type;
+		[Export ("type")]
+		string Type { get; set; }
+
+		// -(instancetype _Nonnull)initWithDictionary:(NSDictionary<NSString *,id> * _Nonnull)dictionary;
+		[Export ("initWithDictionary:")]
+		IntPtr Constructor (NSDictionary<NSString, NSObject> dictionary);
+	}
+
+	// @interface DPCBankMetadata : NSObject
+	[BaseType (typeof(NSObject))]
+	interface DPCBankMetadata
+	{
+		// @property (nonatomic, strong) DPCLinesAddress * _Nonnull linesAddress;
+		[Export ("linesAddress", ArgumentSemantic.Strong)]
+		DPCLinesAddress LinesAddress { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull bankName;
+		[Export ("bankName")]
+		string BankName { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull branchAddress;
+		[Export ("branchAddress")]
+		string BranchAddress { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull branchName;
+		[Export ("branchName")]
+		string BranchName { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull swiftCode;
+		[Export ("swiftCode")]
+		string SwiftCode { get; set; }
+
+		// @property (assign, nonatomic) BOOL isCreateBeneficairyEndpointRequired;
+		[Export ("isCreateBeneficairyEndpointRequired")]
+		bool IsCreateBeneficairyEndpointRequired { get; set; }
+
+		// @property (assign, nonatomic) NSTimeInterval beneficiaryCoolDownPeriod;
+		[Export ("beneficiaryCoolDownPeriod")]
+		double BeneficiaryCoolDownPeriod { get; set; }
+
+		// @property (copy, nonatomic) NSArray<DPCTransferBound *> * _Nonnull transferBounds;
+		[Export ("transferBounds", ArgumentSemantic.Copy)]
+		DPCTransferBound[] TransferBounds { get; set; }
+
+		// @property (nonatomic, strong) DPCPair * _Nonnull country;
+		[Export ("country", ArgumentSemantic.Strong)]
+		DPCPair Country { get; set; }
+
+		// @property (assign, nonatomic) NSTimeInterval transactionsRetentionPeriod;
+		[Export ("transactionsRetentionPeriod")]
+		double TransactionsRetentionPeriod { get; set; }
+
+		// -(instancetype _Nonnull)initWithDictionary:(NSDictionary<NSString *,id> * _Nonnull)dictionary;
+		[Export ("initWithDictionary:")]
+		IntPtr Constructor (NSDictionary<NSString, NSObject> dictionary);
+
+		// -(DPCBeneficiaryInfo * _Nonnull)basicBeneficiaryInfo;
+		[Export ("basicBeneficiaryInfo")]
+		[Verify (MethodToProperty)]
+		DPCBeneficiaryInfo BasicBeneficiaryInfo { get; }
+	}
+	
 	// @interface DPCConfigurations : NSObject
 	[BaseType(typeof(NSObject))]
 	interface DPCConfigurations
@@ -119,77 +197,87 @@ namespace NativeLibrary
 	}
 
 	// @interface DPCBeneficiaryInfo : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType (typeof(NSObject))]
 	interface DPCBeneficiaryInfo
 	{
 		// @property (nonatomic, strong) DPCLinesAddress * _Nullable linesAddress;
-		[NullAllowed, Export("linesAddress", ArgumentSemantic.Strong)]
+		[NullAllowed, Export ("linesAddress", ArgumentSemantic.Strong)]
 		DPCLinesAddress LinesAddress { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nullable accountNumber;
-		[NullAllowed, Export("accountNumber")]
+		[NullAllowed, Export ("accountNumber")]
 		string AccountNumber { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nullable name;
-		[NullAllowed, Export("name")]
+		[NullAllowed, Export ("name")]
 		string Name { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nullable bankName;
-		[NullAllowed, Export("bankName")]
+		[NullAllowed, Export ("bankName")]
 		string BankName { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nullable swiftCode;
-		[NullAllowed, Export("swiftCode")]
+		[NullAllowed, Export ("swiftCode")]
 		string SwiftCode { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nullable sendingSwiftCode;
-		[NullAllowed, Export("sendingSwiftCode")]
+		[NullAllowed, Export ("sendingSwiftCode")]
 		string SendingSwiftCode { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nullable iban;
-		[NullAllowed, Export("iban")]
+		[NullAllowed, Export ("iban")]
 		string Iban { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nullable phoneNumber;
-		[NullAllowed, Export("phoneNumber")]
+		[NullAllowed, Export ("phoneNumber")]
 		string PhoneNumber { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nullable country;
-		[NullAllowed, Export("country")]
+		[NullAllowed, Export ("country")]
 		string Country { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nullable sendingCountry;
-		[NullAllowed, Export("sendingCountry")]
+		[NullAllowed, Export ("sendingCountry")]
 		string SendingCountry { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nullable branchAddress;
-		[NullAllowed, Export("branchAddress")]
+		[NullAllowed, Export ("branchAddress")]
 		string BranchAddress { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nullable branchName;
-		[NullAllowed, Export("branchName")]
+		[NullAllowed, Export ("branchName")]
 		string BranchName { get; set; }
+
+		// -(NSDictionary<NSString *,id> * _Nonnull)dictionaryRepresentation;
+		[Export ("dictionaryRepresentation")]
+		[Verify (MethodToProperty)]
+		NSDictionary<NSString, NSObject> DictionaryRepresentation { get; }
 	}
 
 	// @interface DPCLinesAddress : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType (typeof(NSObject))]
 	interface DPCLinesAddress
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull line1;
-		[Export("line1")]
+		[Export ("line1")]
 		string Line1 { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nonnull line2;
-		[Export("line2")]
+		[Export ("line2")]
 		string Line2 { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nonnull line3;
-		[Export("line3")]
+		[Export ("line3")]
 		string Line3 { get; set; }
 
+		// -(NSDictionary<NSString *,id> * _Nonnull)dicrionaryRepresentation;
+		[Export ("dicrionaryRepresentation")]
+		[Verify (MethodToProperty)]
+		NSDictionary<NSString, NSObject> DicrionaryRepresentation { get; }
+
 		// -(instancetype _Nonnull)initWithDictionary:(NSDictionary<NSString *,id> * _Nonnull)dictionary;
-		[Export("initWithDictionary:")]
-		IntPtr Constructor(NSDictionary<NSString, NSObject> dictionary);
+		[Export ("initWithDictionary:")]
+		IntPtr Constructor (NSDictionary<NSString, NSObject> dictionary);
 	}
 
 	// @protocol DPCConnectDelegate <NSObject>
@@ -259,6 +347,8 @@ namespace NativeLibrary
 		[Export("initWithDictionary:")]
 		IntPtr Constructor(NSDictionary<NSString, NSObject> dictionary);
 	}
+
+
 
 	// @interface DPCAddress : NSObject
 	[BaseType(typeof(NSObject))]
