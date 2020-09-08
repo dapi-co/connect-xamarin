@@ -7,9 +7,74 @@ using UIKit;
 namespace NativeLibrary
 {
 
+	[Static]
+	[Verify (ConstantsInterfaceAssociation)]
+	partial interface Constants
+	{
+		// extern const DPCAppEnvironment _Nonnull DPCAppEnvironmentProduction;
+		[Field ("DPCAppEnvironmentProduction", "__Internal")]
+		NSString DPCAppEnvironmentProduction { get; }
 
+		// extern const DPCAppEnvironment _Nonnull DPCAppEnvironmentSandbox;
+		[Field ("DPCAppEnvironmentSandbox", "__Internal")]
+		NSString DPCAppEnvironmentSandbox { get; }
 
+		// extern const DPCEndPoint _Nonnull DPCEndPointExchangeToken;
+		[Field ("DPCEndPointExchangeToken", "__Internal")]
+		NSString DPCEndPointExchangeToken { get; }
 
+		// extern const DPCEndPoint _Nonnull DPCEndPointGetIdentity;
+		[Field ("DPCEndPointGetIdentity", "__Internal")]
+		NSString DPCEndPointGetIdentity { get; }
+
+		// extern const DPCEndPoint _Nonnull DPCEndPointGetAccounts;
+		[Field ("DPCEndPointGetAccounts", "__Internal")]
+		NSString DPCEndPointGetAccounts { get; }
+
+		// extern const DPCEndPoint _Nonnull DPCEndPointGetAccountMetadata;
+		[Field ("DPCEndPointGetAccountMetadata", "__Internal")]
+		NSString DPCEndPointGetAccountMetadata { get; }
+
+		// extern const DPCEndPoint _Nonnull DPCEndPointGetBalance;
+		[Field ("DPCEndPointGetBalance", "__Internal")]
+		NSString DPCEndPointGetBalance { get; }
+
+		// extern const DPCEndPoint _Nonnull DPCEndPointGetTransactions;
+		[Field ("DPCEndPointGetTransactions", "__Internal")]
+		NSString DPCEndPointGetTransactions { get; }
+
+		// extern const DPCEndPoint _Nonnull DPCEndPointGetBeneficiaries;
+		[Field ("DPCEndPointGetBeneficiaries", "__Internal")]
+		NSString DPCEndPointGetBeneficiaries { get; }
+
+		// extern const DPCEndPoint _Nonnull DPCEndPointCreateBeneficiary;
+		[Field ("DPCEndPointCreateBeneficiary", "__Internal")]
+		NSString DPCEndPointCreateBeneficiary { get; }
+
+		// extern const DPCEndPoint _Nonnull DPCEndPointCreateTransfer;
+		[Field ("DPCEndPointCreateTransfer", "__Internal")]
+		NSString DPCEndPointCreateTransfer { get; }
+
+		// extern const DPCEndPoint _Nonnull DPCEndPointResumeJob;
+		[Field ("DPCEndPointResumeJob", "__Internal")]
+		NSString DPCEndPointResumeJob { get; }
+
+		// extern const DPCEndPoint _Nonnull DPCEndPointDelinkUser;
+		[Field ("DPCEndPointDelinkUser", "__Internal")]
+		NSString DPCEndPointDelinkUser { get; }
+
+		// extern const DPCColorScheme _Nonnull DPCColorSchemeGeneral;
+		[Field ("DPCColorSchemeGeneral", "__Internal")]
+		NSString DPCColorSchemeGeneral { get; }
+
+		// extern const DPCColorScheme _Nonnull DPCColorSchemeBW;
+		[Field ("DPCColorSchemeBW", "__Internal")]
+		NSString DPCColorSchemeBW { get; }
+
+		// extern const DPCColorScheme _Nonnull DPCColorSchemeNeon;
+		[Field ("DPCColorSchemeNeon", "__Internal")]
+		NSString DPCColorSchemeNeon { get; }
+	}
 
 	// @interface DPCTransferBound : NSObject
 	[BaseType (typeof(NSObject))]
@@ -87,32 +152,57 @@ namespace NativeLibrary
 	}
 	
 	// @interface DPCConfigurations : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
 	interface DPCConfigurations
 	{
-		// @property (copy, nonatomic) DPCAppEnvironment _Nonnull environment;
-		[Export("environment")]
-		string Environment { get; set; }
+		// @property (copy, nonatomic) NSString * _Nonnull appKey;
+		[Export ("appKey")]
+		string AppKey { get; set; }
 
 		// @property (nonatomic, strong) NSURLComponents * _Nonnull baseUrl;
-		[Export("baseUrl", ArgumentSemantic.Strong)]
+		[Export ("baseUrl", ArgumentSemantic.Strong)]
 		NSUrlComponents BaseUrl { get; set; }
 
+		// @property (copy, nonatomic) NSArray<NSString *> * _Nonnull countries;
+		[Export ("countries", ArgumentSemantic.Copy)]
+		string[] Countries { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull clientUserID;
+		[Export ("clientUserID")]
+		string ClientUserID { get; set; }
+
+		// @property (copy, nonatomic) DPCAppEnvironment _Nonnull environment;
+		[Export ("environment")]
+		string Environment { get; set; }
+
 		// @property (copy, nonatomic) NSDictionary<DPCEndPoint,NSString *> * _Nonnull endpoints;
-		[Export("endpoints", ArgumentSemantic.Copy)]
+		[Export ("endpoints", ArgumentSemantic.Copy)]
 		NSDictionary<NSString, NSString> Endpoints { get; set; }
 
 		// @property (copy, nonatomic) DPCColorScheme _Nonnull colorScheme;
-		[Export("colorScheme")]
+		[Export ("colorScheme")]
 		string ColorScheme { get; set; }
 
-		// @property (copy, nonatomic) NSArray<NSString *> * _Nonnull countries;
-		[Export("countries", ArgumentSemantic.Copy)]
-		string[] Countries { get; set; }
+		// @property (assign, nonatomic) BOOL isExperimental;
+		[Export ("isExperimental")]
+		bool IsExperimental { get; set; }
 
-		// @property (assign, nonatomic) BOOL includeExperimentalBanks;
-		[Export("includeExperimentalBanks")]
-		bool IncludeExperimentalBanks { get; set; }
+		// @property (copy, nonatomic) NSDictionary<DPCEndPoint,NSArray<NSURLQueryItem *> *> * _Nonnull endPointExtraQueryItems;
+		[Export ("endPointExtraQueryItems", ArgumentSemantic.Copy)]
+		NSDictionary<NSString, NSArray<NSURLQueryItem>> EndPointExtraQueryItems { get; set; }
+
+		// @property (copy, nonatomic) NSDictionary<DPCEndPoint,NSDictionary<NSString *,NSString *> *> * _Nonnull endPointExtraHeaderFields;
+		[Export ("endPointExtraHeaderFields", ArgumentSemantic.Copy)]
+		NSDictionary<NSString, NSDictionary<NSString, NSString>> EndPointExtraHeaderFields { get; set; }
+
+		// @property (copy, nonatomic) NSDictionary<DPCEndPoint,NSDictionary<NSString *,id> *> * _Nonnull endPointExtraBody;
+		[Export ("endPointExtraBody", ArgumentSemantic.Copy)]
+		NSDictionary<NSString, NSDictionary<NSString, NSObject>> EndPointExtraBody { get; set; }
+
+		// -(instancetype _Nonnull)initWithAppKey:(NSString * _Nonnull)appKey baseUrl:(NSURLComponents * _Nonnull)baseUrl countries:(NSArray<NSString *> * _Nonnull)countries clientUserID:(NSString * _Nonnull)clientUserID;
+		[Export ("initWithAppKey:baseUrl:countries:clientUserID:")]
+		IntPtr Constructor (string appKey, NSUrlComponents baseUrl, string[] countries, string clientUserID);
 	}
 	
 	// @interface DPCConnectionSubaccountDetails : NSObject
