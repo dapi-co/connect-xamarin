@@ -597,40 +597,40 @@ namespace NativeLibrary
 	}
 
 	// @interface DPCAccount : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType (typeof(NSObject))]
 	interface DPCAccount
 	{
 		// @property (nonatomic, strong) NSString * _Nonnull iban;
-		[Export("iban", ArgumentSemantic.Strong)]
+		[Export ("iban", ArgumentSemantic.Strong)]
 		string Iban { get; set; }
 
 		// @property (nonatomic, strong) NSString * _Nonnull number;
-		[Export("number", ArgumentSemantic.Strong)]
+		[Export ("number", ArgumentSemantic.Strong)]
 		string Number { get; set; }
 
-		// @property (nonatomic, strong) NSString * _Nonnull currency;
-		[Export("currency", ArgumentSemantic.Strong)]
-		string Currency { get; set; }
+		// @property (nonatomic, strong) DPCPair * _Nonnull currency;
+		[Export ("currency", ArgumentSemantic.Strong)]
+		DPCPair Currency { get; set; }
 
 		// @property (nonatomic, strong) NSString * _Nonnull type;
-		[Export("type", ArgumentSemantic.Strong)]
+		[Export ("type", ArgumentSemantic.Strong)]
 		string Type { get; set; }
 
 		// @property (nonatomic, strong) NSString * _Nonnull name;
-		[Export("name", ArgumentSemantic.Strong)]
+		[Export ("name", ArgumentSemantic.Strong)]
 		string Name { get; set; }
 
 		// @property (nonatomic, strong) NSString * _Nonnull accountID;
-		[Export("accountID", ArgumentSemantic.Strong)]
+		[Export ("accountID", ArgumentSemantic.Strong)]
 		string AccountID { get; set; }
 
 		// @property (assign, nonatomic) BOOL isFavourite;
-		[Export("isFavourite")]
+		[Export ("isFavourite")]
 		bool IsFavourite { get; set; }
 
 		// -(instancetype _Nonnull)initWithDictionary:(NSDictionary<NSString *,id> * _Nonnull)dictionary;
-		[Export("initWithDictionary:")]
-		IntPtr Constructor(NSDictionary<NSString, NSObject> dictionary);
+		[Export ("initWithDictionary:")]
+		IntPtr Constructor (NSDictionary<NSString, NSObject> dictionary);
 	}
 
 	// @interface DPCPair : NSObject
