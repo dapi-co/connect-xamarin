@@ -763,14 +763,18 @@ namespace NativeLibrary
 		// -(void)createBeneficiaryWithInfo:(DPCBeneficiaryInfo * _Nonnull)info completion:(void (^ _Nullable)(DPCResult * _Nullable, NSError * _Nullable, NSString * _Nullable))completion;
 		[Export("createBeneficiaryWithInfo:completion:")]
 		void CreateBeneficiaryWithInfo(DPCBeneficiaryInfo info, [NullAllowed] Action<DPCResult, NSError, NSString> completion);
-
+		
 		// -(void)createTransferWithSenderID:(NSString * _Nonnull)senderID amount:(NSNumber * _Nonnull)amount toReceiverID:(NSString * _Nonnull)receiverID completion:(void (^ _Nullable)(DPCResult * _Nullable, NSError * _Nullable, NSString * _Nullable))completion;
-		[Export("createTransferWithSenderID:amount:toReceiverID:completion:")]
-		void CreateTransferWithSenderID(string senderID, NSNumber amount, string receiverID, [NullAllowed] Action<DPCResult, NSError, NSString> completion);
+		[Export ("createTransferWithSenderID:amount:toReceiverID:completion:")]
+		void CreateTransferWithSenderID (string senderID, NSNumber amount, string receiverID, [NullAllowed] Action<DPCResult, NSError, NSString> completion);
+
+		// -(void)createTransferWithSenderID:(NSString * _Nonnull)senderID amount:(NSNumber * _Nonnull)amount toAccountNumber:(NSString * _Nonnull)accountNumber name:(NSString * _Nonnull)name completion:(void (^ _Nullable)(DPCResult * _Nullable, NSError * _Nullable, NSString * _Nullable))completion;
+		[Export ("createTransferWithSenderID:amount:toAccountNumber:name:completion:")]
+		void CreateTransferWithSenderID (string senderID, NSNumber amount, string accountNumber, string name, [NullAllowed] Action<DPCResult, NSError, NSString> completion);
 
 		// -(void)createTransferWithSenderID:(NSString * _Nonnull)senderID amount:(NSNumber * _Nonnull)amount iban:(NSString * _Nonnull)iban name:(NSString * _Nonnull)name completion:(void (^ _Nullable)(DPCResult * _Nullable, NSError * _Nullable, NSString * _Nullable))completion;
-		[Export("createTransferWithSenderID:amount:iban:name:completion:")]
-		void CreateTransferWithSenderID(string senderID, NSNumber amount, string iban, string name, [NullAllowed] Action<DPCResult, NSError, NSString> completion);
+		[Export ("createTransferWithSenderID:amount:iban:name:completion:")]
+		void CreateTransferWithSenderID (string senderID, NSNumber amount, string iban, string name, [NullAllowed] Action<DPCResult, NSError, NSString> completion);
 	}
 
 	// @interface DPCAuth : DPCAPI
